@@ -2,7 +2,7 @@
 // Simple Guestbook with SQLite
 
 // Debug mode flag - Set to true for development, false for production
-$debug_mode = true;
+$debug_mode = false;
 
 // Database configuration
 $db_file = '../guestbook.sqlite';
