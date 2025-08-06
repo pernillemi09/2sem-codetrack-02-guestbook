@@ -145,7 +145,7 @@ try {
 // Set security headers based on debug mode
 if (!$debug_mode) {
     // Controls which resources can be loaded - prevents XSS attacks by restricting sources
-    header("Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;");
+    header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';");
 
     // Prevents browsers from MIME-sniffing (interpreting files as a different content-type)
     header('X-Content-Type-Options: nosniff');
