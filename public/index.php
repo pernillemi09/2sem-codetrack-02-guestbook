@@ -177,12 +177,14 @@ if (!$debug_mode) {
     <style>
         body {
             font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
             background-color: #cce3ff;
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239fc5e8' fill-opacity='0.43' fill-rule='evenodd'/%3E%3C/svg%3E");
             cursor: crosshair;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
         .guestbook-form-container {
             background: linear-gradient(to bottom, #ffffff, #f0f8ff);
@@ -400,117 +402,117 @@ if (!$debug_mode) {
                 document.querySelector('.toggle-button-container').style.display = 'none';
             }
         }
-
-
     </script>
 </head>
 <body>
-    <marquee behavior="alternate" scrollamount="3">
-        <h1>~*~ My Guestbook ~*~</h1>
-    </marquee>
-    <div class="welcome-message">
-        <span style="color:#ff6699;">★</span>
-        Welcome to my <blink>AWESOME</blink> Homepage!
-        <span style="color:#ff6699;">★</span>
-        <br>
-        <span style="color:#6666cc; font-size:11px;">
-            You are visitor #<?php echo random_int(10000, 99999); ?> since 03/14/2000
-        </span>
-        <br>
-        <div style="margin-top:8px; font-size:13px;">
-            This site is best viewed in Netscape Navigator 4.0 or Internet Explorer 5.0 at 800x600 resolution.
+    <div class="container">
+        <marquee behavior="alternate" scrollamount="3">
+            <h1>~*~ My Guestbook ~*~</h1>
+        </marquee>
+        <div class="welcome-message">
+            <span style="color:#ff6699;">★</span>
+            Welcome to my <blink>AWESOME</blink> Homepage!
+            <span style="color:#ff6699;">★</span>
             <br>
-            Please sign my guestbook to let me know you stopped by! <b>No</b> spam please! ^_^
+            <span style="color:#6666cc; font-size:11px;">
+                You are visitor #<?php echo random_int(10000, 99999); ?> since 03/14/2000
+            </span>
+            <br>
+            <div style="margin-top:8px; font-size:13px;">
+                This site is best viewed in Netscape Navigator 4.0 or Internet Explorer 5.0 at 800x600 resolution.
+                <br>
+                Please sign my guestbook to let me know you stopped by! <b>No</b> spam please! ^_^
+            </div>
         </div>
-    </div>
 
-    <div class="toggle-button-container">
-        <button id="toggleFormButton" class="toggle-button" onclick="toggleGuestbookForm()">
-            Click here to sign my guestbook!
-        </button>
-    </div>
-
-    <div class="guestbook-form-container" id="guestbookForm" style="display: none;">
-        <div class="close-button" id="closeFormButton" onclick="toggleGuestbookForm()">
-            &times;
+        <div class="toggle-button-container">
+            <button id="toggleFormButton" class="toggle-button" onclick="toggleGuestbookForm()">
+                Click here to sign my guestbook!
+            </button>
         </div>
-        <?php if (isset($error)): ?>
-            <div class="error">
-                <?php echo htmlspecialchars($error); ?>
+
+        <div class="guestbook-form-container" id="guestbookForm" style="display: none;">
+            <div class="close-button" id="closeFormButton" onclick="toggleGuestbookForm()">
+                &times;
             </div>
-        <?php endif; ?>
-
-        <form method="POST">
-            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
-            <div class="form-group">
-                <label for="name">Name*:</label>
-                <input type="text" id="name" name="name" aria-required="true" maxlength="100" value="<?php echo isset($_COOKIE['guestbook_name']) ? htmlspecialchars($_COOKIE['guestbook_name']) : ''; ?>">
-            </div>
-
-            <div class="form-group">
-                <label for="website">Website:</label>
-                <input type="url" id="website" name="website" maxlength="200" placeholder="https://your-website.com" value="<?php echo isset($_COOKIE['guestbook_website']) ? htmlspecialchars($_COOKIE['guestbook_website']) : ''; ?>">
-            </div>
-
-            <div class="form-group">
-                <label for="message">Message*:</label>
-                <textarea id="message" name="message" aria-required="true" maxlength="500" placeholder="Leave your message here..."></textarea>
-            </div>
-
-            <button type="submit">Send</button>
-        </form>
-    </div>
-
-    <div class="entries">
-        <h2><?php echo count($entries); ?> Entries</h2>
-
-        <?php if (empty($entries)): ?>
-            <div class="no-entries">
-                No entries yet. Be the first to sign my guestbook!
-            </div>
-        <?php else: ?>
-            <?php foreach ($entries as $entry): ?>
-                <div class="entry">
-                    <div class="entry-header">
-                        <?php echo htmlspecialchars($entry['name']); ?>
-                        <?php if (!empty($entry['website'])): ?>
-                            -
-                            <a href="<?php echo htmlspecialchars($entry['website']); ?>" target="_blank" rel="noopener">
-                                Website
-                            </a>
-                        <?php endif; ?>
-                        <span class="entry-date">
-                            <?php echo date('F j, Y \a\t g:i A', strtotime($entry['created_at'])); ?>
-                        </span>
-                    </div>
-                    <div class="entry-message">
-                        <?php echo nl2br(htmlspecialchars($entry['message'])); ?>
-                    </div>
+            <?php if (isset($error)): ?>
+                <div class="error">
+                    <?php echo htmlspecialchars($error); ?>
                 </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
+            <?php endif; ?>
 
-    <div class="footer">
-        <div style="margin:15px 0; font-size:11px;">
-            <div style="margin-bottom:10px;">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwAgMAAAAqbBEUAAAACVBMVEUAAAD///8AAABzxoNxAAAAAnRSTlMAAHaTzTgAAAAtSURBVHicY2DAD1SxwADDqAIsQIZqFAwahoZGDShoZGRktMGgkZFxowZuAAAoXwEg9KnZcAAAAABJRU5ErkJggg==" alt="under construction" class="construction-image construction-image-left">
-                <span class="construction-text">
-                    <blink>UNDER CONSTRUCTION</blink> - Please excuse our dust!
-                </span>
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwAgMAAAAqbBEUAAAACVBMVEUAAAD///8AAABzxoNxAAAAAnRSTlMAAHaTzTgAAAAtSURBVHicY2DAD1SxwADDqAIsQIZqFAwahoZGDShoZGRktMGgkZFxowZuAAAoXwEg9KnZcAAAAABJRU5ErkJggg==" alt="under construction" class="construction-image construction-image-right">
-            </div>
-            <div style="margin:10px 0; color:#666699;">
-                Made with <span style="color:#ff0000;">&hearts;</span> on a Pentium III using Notepad
-            </div>
-            <div style="margin-top:10px;">
-                <a href="#" onclick="alert('Coming soon!');">Home</a> |
-                <a href="#" onclick="alert('My photos will be uploaded when I scan them!');">Photos</a> |
-                <a href="#" onclick="alert('My links page is under construction!');">Cool Links</a> |
-                <a href="#" onclick="alert('You are already here!');">Guestbook</a>
-            </div>
-            <div style="margin-top:15px; font-size:10px; color:#999;">
-                Copyright &copy; 2000-<?= date('Y') ?> | Last updated: 08/06/2025
+            <form method="POST">
+                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
+                <div class="form-group">
+                    <label for="name">Name*:</label>
+                    <input type="text" id="name" name="name" aria-required="true" maxlength="100" value="<?php echo isset($_COOKIE['guestbook_name']) ? htmlspecialchars($_COOKIE['guestbook_name']) : ''; ?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="website">Website:</label>
+                    <input type="url" id="website" name="website" maxlength="200" placeholder="https://your-website.com" value="<?php echo isset($_COOKIE['guestbook_website']) ? htmlspecialchars($_COOKIE['guestbook_website']) : ''; ?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message*:</label>
+                    <textarea id="message" name="message" aria-required="true" maxlength="500" placeholder="Leave your message here..."></textarea>
+                </div>
+
+                <button type="submit">Send</button>
+            </form>
+        </div>
+
+        <div class="entries">
+            <h2><?php echo count($entries); ?> Entries</h2>
+
+            <?php if (empty($entries)): ?>
+                <div class="no-entries">
+                    No entries yet. Be the first to sign my guestbook!
+                </div>
+            <?php else: ?>
+                <?php foreach ($entries as $entry): ?>
+                    <div class="entry">
+                        <div class="entry-header">
+                            <?php echo htmlspecialchars($entry['name']); ?>
+                            <?php if (!empty($entry['website'])): ?>
+                                -
+                                <a href="<?php echo htmlspecialchars($entry['website']); ?>" target="_blank" rel="noopener">
+                                    Website
+                                </a>
+                            <?php endif; ?>
+                            <span class="entry-date">
+                                <?php echo date('F j, Y \a\t g:i A', strtotime($entry['created_at'])); ?>
+                            </span>
+                        </div>
+                        <div class="entry-message">
+                            <?php echo nl2br(htmlspecialchars($entry['message'])); ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+
+        <div class="footer">
+            <div style="margin:15px 0; font-size:11px;">
+                <div style="margin-bottom:10px;">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwAgMAAAAqbBEUAAAACVBMVEUAAAD///8AAABzxoNxAAAAAnRSTlMAAHaTzTgAAAAtSURBVHicY2DAD1SxwADDqAIsQIZqFAwahoZGDShoZGRktMGgkZFxowZuAAAoXwEg9KnZcAAAAABJRU5ErkJggg==" alt="under construction" class="construction-image construction-image-left">
+                    <span class="construction-text">
+                        <blink>UNDER CONSTRUCTION</blink> - Please excuse our dust!
+                    </span>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwAgMAAAAqbBEUAAAACVBMVEUAAAD///8AAABzxoNxAAAAAnRSTlMAAHaTzTgAAAAtSURBVHicY2DAD1SxwADDqAIsQIZqFAwahoZGDShoZGRktMGgkZFxowZuAAAoXwEg9KnZcAAAAABJRU5ErkJggg==" alt="under construction" class="construction-image construction-image-right">
+                </div>
+                <div style="margin:10px 0; color:#666699;">
+                    Made with <span style="color:#ff0000;">&hearts;</span> on a Pentium III using Notepad
+                </div>
+                <div style="margin-top:10px;">
+                    <a href="#" onclick="alert('Coming soon!');">Home</a> |
+                    <a href="#" onclick="alert('My photos will be uploaded when I scan them!');">Photos</a> |
+                    <a href="#" onclick="alert('My links page is under construction!');">Cool Links</a> |
+                    <a href="#" onclick="alert('You are already here!');">Guestbook</a>
+                </div>
+                <div style="margin-top:15px; font-size:10px; color:#999;">
+                    Copyright &copy; 2000-<?= date('Y') ?> | Last updated: 08/06/2025
+                </div>
             </div>
         </div>
     </div>
