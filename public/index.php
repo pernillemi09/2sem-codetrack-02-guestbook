@@ -17,6 +17,7 @@ try {
         CREATE TABLE IF NOT EXISTS entries (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
+            city TEXT NOT NULL,
             message TEXT NOT NULL,
             website TEXT,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -177,7 +178,7 @@ if (!$debug_mode) {
     <style>
         body {
             font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
-            background-color: #cce3ff;
+            background-color: dimgrey;
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239fc5e8' fill-opacity='0.43' fill-rule='evenodd'/%3E%3C/svg%3E");
             cursor: crosshair;
         }
@@ -190,11 +191,11 @@ if (!$debug_mode) {
             background: linear-gradient(to bottom, #ffffff, #f0f8ff);
             padding: 25px;
             border-radius: 0;
-            border: 3px solid #9fc5e8;
+            border: 3px solid #003366;
             box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
         }
         h1 {
-            color: #0066cc;
+            color: #cc0000;
             margin-bottom: 30px;
             text-shadow: 2px 2px 3px #cccccc;
             font-size: 32px;
@@ -203,7 +204,7 @@ if (!$debug_mode) {
         }
         h1:before, h1:after {
             content: "✧";
-            color: #ff6699;
+            color: yellow;
             margin: 0 10px;
         }
         .welcome-message {
@@ -218,7 +219,7 @@ if (!$debug_mode) {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #333399;
+            color: #9fc5e8;
         }
         input, textarea {
             width: 100%;
@@ -271,7 +272,7 @@ if (!$debug_mode) {
         }
         .entry-header {
             font-weight: bold;
-            color: #003366;
+            color: #9fc5e8;
             margin-bottom: 5px;
             border-bottom: 1px dotted #99ccff;
             padding-bottom: 5px;
@@ -284,11 +285,11 @@ if (!$debug_mode) {
         .entry-message {
             margin-top: 10px;
             line-height: 1.5;
-            color: #333333;
+            color: #ff9900;
         }
         .no-entries {
             text-align: center;
-            color: #666699;
+            color: darkred;
             font-style: italic;
             margin-top: 20px;
             padding: 20px;
@@ -315,7 +316,7 @@ if (!$debug_mode) {
             vertical-align: top;
         }
         a {
-            color: #0066cc;
+            color: #ff9900;
             text-decoration: underline;
         }
         a:hover {
@@ -348,7 +349,7 @@ if (!$debug_mode) {
             right: 15px;
             font-size: 24px;
             font-weight: bold;
-            color: #999999;
+            color: #ff9900;
             cursor: pointer;
             line-height: 20px;
             width: 20px;
@@ -365,7 +366,7 @@ if (!$debug_mode) {
         blink {
             animation: blinker 1s step-end infinite;
             font-weight: bold;
-            color: #ff3366;
+            color: #ff0000;
         }
         @keyframes blinker {
             50% { opacity: 0; }
@@ -410,11 +411,11 @@ if (!$debug_mode) {
             <h1>~*~ My Guestbook ~*~</h1>
         </marquee>
         <div class="welcome-message">
-            <span style="color:#ff6699;">★</span>
+            <span style="color:#ff0000;">★</span>
             Welcome to my <blink>AWESOME</blink> Homepage!
-            <span style="color:#ff6699;">★</span>
+            <span style="color:#ff0000;">★</span>
             <br>
-            <span style="color:#6666cc; font-size:11px;">
+            <span style="color:#ff9900; font-size:11px;">
                 You are visitor #<?php echo random_int(10000, 99999); ?> since 03/14/2000
             </span>
             <br>
@@ -501,7 +502,7 @@ if (!$debug_mode) {
                     </span>
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwAgMAAAAqbBEUAAAACVBMVEUAAAD///8AAABzxoNxAAAAAnRSTlMAAHaTzTgAAAAtSURBVHicY2DAD1SxwADDqAIsQIZqFAwahoZGDShoZGRktMGgkZFxowZuAAAoXwEg9KnZcAAAAABJRU5ErkJggg==" alt="under construction" class="construction-image construction-image-right">
                 </div>
-                <div style="margin:10px 0; color:#666699;">
+                <div style="margin:10px 0; color:#ff9900;">
                     Made with <span style="color:#ff0000;">&hearts;</span> on a Pentium III using Notepad
                 </div>
                 <div style="margin-top:10px;">
@@ -510,7 +511,7 @@ if (!$debug_mode) {
                     <a href="#" onclick="alert('My links page is under construction!');">Cool Links</a> |
                     <a href="#" onclick="alert('You are already here!');">Guestbook</a>
                 </div>
-                <div style="margin-top:15px; font-size:10px; color:#999;">
+                <div style="margin-top:15px; font-size:10px; color:#ff9900;">
                     Copyright &copy; 2000-<?= date('Y') ?> | Last updated: 08/06/2025
                 </div>
             </div>
